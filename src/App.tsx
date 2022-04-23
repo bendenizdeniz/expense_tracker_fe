@@ -5,6 +5,7 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Categories from "./components/Categories";
+import Record from "./components/Record";
 
 const { Header, Content, Footer } = Layout;
 
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route path="/register" component={SignUp} />
         <PrivateRoute path="/categories" component={Categories} />
+        <PrivateRoute path="/records" component={Record} />
       </Content>
       <Footer style={{ textAlign: "center" }}>
         Expense Tracker App @ Deniz Can ALTUN 2021.

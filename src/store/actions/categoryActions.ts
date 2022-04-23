@@ -30,3 +30,13 @@ export const updateCategory = (form: Partial<CategoryForm>, categoryId: number) 
         dispatch({ type: "UPDATE_CATEGORIES_ERROR" });
     }
 }
+
+export const deleteCategory = (categoryId: number) => async (dispatch: CategoryDispatch) => {
+    dispatch({ type: "DELETE_CATEGORIES_START" });
+    try {
+        await api.delete(`/categories/${categoryId}`);
+        dispatch({ type: "DELETE_CATEGORIES_SUCCESS", payload: categoryId });
+    } catch {
+        dispatch({ type: "DELETE_CATEGORIES_ERROR" });
+    }
+}
