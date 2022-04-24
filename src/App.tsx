@@ -1,37 +1,15 @@
-import { Route } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
-import PrivateRoute from "./components/PrivateRoute";
-import Categories from "./components/Categories";
-import Record from "./components/Record";
-
-const { Header, Content, Footer } = Layout;
+import AppHeader from "./components/AppHeader";
+import AppFooter from "./components/AppFooter";
+import AppContent from "./components/AppContent";
 
 function App() {
   return (
     <Layout>
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal">
-          <Menu.Item key="1">Login</Menu.Item>
-          <Menu.Item key="2">Register</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
-        </Menu>
-      </Header>
-      <Content
-        className="site-layout"
-        style={{ padding: "50px", marginTop: 64 }}
-      >
-        <Route exact path="/" component={Login} />
-        <Route path="/register" component={SignUp} />
-        <PrivateRoute path="/categories" component={Categories} />
-        <PrivateRoute path="/records" component={Record} />
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Expense Tracker App @ Deniz Can ALTUN 2021.
-      </Footer>
+      <AppHeader />
+      <AppContent />
+      <AppFooter />
     </Layout>
   );
 }

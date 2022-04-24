@@ -4,7 +4,7 @@ import api from "../../utils/api";
 export const getCategories = () => async (dispatch: CategoryDispatch) => {
     dispatch({ type: 'GET_CATEGORIES_START' });
     try {
-        const response = await api.get<Category[]>("/categories");
+        const response = await api().get<Category[]>("/categories");
         dispatch({ type: "GET_CATEGORIES_SUCCESS", payload: response.data });
     } catch {
         dispatch({ type: "GET_CATEGORIES_ERROR" });
@@ -14,7 +14,7 @@ export const getCategories = () => async (dispatch: CategoryDispatch) => {
 export const addCategory = (form: CategoryForm) => async (dispatch: CategoryDispatch) => {
     dispatch({ type: 'ADD_CATEGORIES_START' });
     try {
-        const response = await api.post<Category>("/categories", form);
+        const response = await api().post<Category>("/categories", form);
         dispatch({ type: "ADD_CATEGORIES_SUCCESS", payload: response.data });
     } catch {
         dispatch({ type: "ADD_CATEGORIES_ERROR" });
@@ -24,7 +24,7 @@ export const addCategory = (form: CategoryForm) => async (dispatch: CategoryDisp
 export const updateCategory = (form: Partial<CategoryForm>, categoryId: number) => async (dispatch: CategoryDispatch) => {
     dispatch({ type: "UPDATE_CATEGORIES_START" });
     try {
-        const response = await api.put<Category>(`/categories/${categoryId}`, form);
+        const response = await api().put<Category>(`/categories/${categoryId}`, form);
         dispatch({ type: "UPDATE_CATEGORIES_SUCCESS", payload: response.data });
     } catch {
         dispatch({ type: "UPDATE_CATEGORIES_ERROR" });
@@ -34,7 +34,7 @@ export const updateCategory = (form: Partial<CategoryForm>, categoryId: number) 
 export const deleteCategory = (categoryId: number) => async (dispatch: CategoryDispatch) => {
     dispatch({ type: "DELETE_CATEGORIES_START" });
     try {
-        await api.delete(`/categories/${categoryId}`);
+        await api().delete(`/categories/${categoryId}`);
         dispatch({ type: "DELETE_CATEGORIES_SUCCESS", payload: categoryId });
     } catch {
         dispatch({ type: "DELETE_CATEGORIES_ERROR" });
