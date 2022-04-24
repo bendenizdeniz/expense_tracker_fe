@@ -35,9 +35,14 @@ function AppHeader() {
               </Menu.Item>
             </>
           ) : loading ? null : (
-            <Menu.Item key="/">
-              <Link to="/">Login</Link>
-            </Menu.Item>
+            <>
+              <Menu.Item key="/register">
+                <Link to="/register">Register</Link>
+              </Menu.Item>
+              <Menu.Item key="/">
+                <Link to="/">Login</Link>
+              </Menu.Item>
+            </>
           )}
         </Menu>
       </Header>
