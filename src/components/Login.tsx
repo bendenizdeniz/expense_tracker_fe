@@ -1,12 +1,11 @@
 import { Form, Input, Button, Result } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+
 import { AppState } from "../store";
 import { login } from "../store/actions/userActions";
 import { LoginForm } from "../types/user";
-
-import api from "../utils/api";
 import showError from "../utils/showError";
 import showSuccess from "../utils/showSuccess";
 
@@ -15,13 +14,19 @@ function Login() {
   const location = useLocation<{ newSignUp?: boolean }>();
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state: AppState) => state.user);
+  const [isLoggedInFlag, setIsLoggedInFlag] = useState<boolean>(false);
 
   const onFinish = async (values: LoginForm) => {
     dispatch(login(values));
+    setIsLoggedInFlag(true);
   };
 
   useEffect(() => {
-    error && showError(error); //if error exist.
+    console.log(isLoggedInFlag);
+  }, [isLoggedInFlag]);
+
+  useEffect(() => {
+    if (error && isLoggedInFlag === true) showError(error);
   }, [error]);
 
   useEffect(() => {
