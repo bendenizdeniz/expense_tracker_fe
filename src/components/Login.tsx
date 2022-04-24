@@ -22,10 +22,6 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log(isLoggedInFlag);
-  }, [isLoggedInFlag]);
-
-  useEffect(() => {
     if (error && isLoggedInFlag === true) showError(error);
   }, [error]);
 
